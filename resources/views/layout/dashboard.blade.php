@@ -44,7 +44,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('produk.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
                                 Produk
                             </a>
