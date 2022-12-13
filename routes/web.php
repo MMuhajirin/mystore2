@@ -1,13 +1,19 @@
 <?php
 
+use App\Http\Controllers\Contorller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KatgoriController;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controller as RoutingController;
+use App\Http\Controllers\LatihanController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\ProdukController;
+
 
 
 
@@ -23,18 +29,27 @@ use App\Http\Controllers\LaporanController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage.index');
 });
+
 
 // Route group admin
 Route::group(['prefix' => '/admin'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.admin');
 
+    //Route::group parent homepage
+    Route::group(['prefix' => '/homepage'], function() {
+        Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
+        Route::get('/about', [HomepageController::class, 'about'])->name('about.homepage');
+        Route::get('/kategori', [HomepageController::class, 'kategori'])->name('kategori.homepage');
+        Route::get('/kontak', [HompageController::class, 'kontak'])->name('kontak.homepage');
+    });
+
     //Route::group parent kategori
     Route::group(['prefix' => '/kategori'], function() {
-        Route::get('/', [KatgoriController::class, 'index'])->name('kategori.index');
-        Route::get('/create', [KatgoriController::class, 'create'])->name('create.kategori');
-        Route::get('/edit', [KatgoriController::class, 'edit'])->name('edit.kategori');
+        Route::get('/', [KategoriController::class, 'index'])->name('kategori.index');
+        Route::get('/create', [KategoriController::class, 'create'])->name('create.kategori');
+        Route::get('/edit', [KategoriController::class, 'edit'])->name('edit.kategori');
     });
 
     //Route::group parent produk
@@ -74,4 +89,5 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/proseslaporan', [LaporanController::class, 'proses'])->name('laporan.proses');
 
     });
+
 });
