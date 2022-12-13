@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KatgoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\CustomerController;
 
 
 
@@ -48,6 +49,13 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/', [TransaksiController::class, 'index'])->name('transaksi.index');
         Route::get('/edit', [TransaksiController::class, 'edit'])->name('transaksi.edit');
         Route::get('/show', [TransaksiController::class, 'show'])->name('transaksi.show');
+
+    });
+
+    //Route::group parent customer
+    Route::group(['prefix' => '/customer'], function (){
+        Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
+        Route::get('/edit', [CustomerController::class, 'edit'])->name('customer.edit');
 
     });
 });
