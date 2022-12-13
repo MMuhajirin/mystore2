@@ -7,6 +7,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LaporanController;
 
 
 
@@ -64,6 +65,13 @@ Route::group(['prefix' => '/admin'], function() {
     Route::group(['prefix' => '/user'], function (){
         Route::get('/', [UserController::class, 'index'])->name('user.index');
         Route::get('/setting', [UserController::class, 'setting'])->name('user.setting');
+
+    });
+
+    //Route::group parent laporan
+    Route::group(['prefix' => '/laporan'], function (){
+        Route::get('/', [LaporanController::class, 'index'])->name('laporan.index');
+        Route::get('/proseslaporan', [LaporanController::class, 'proses'])->name('laporan.proses');
 
     });
 });

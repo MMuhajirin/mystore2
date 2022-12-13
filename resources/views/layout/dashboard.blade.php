@@ -52,7 +52,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                                 Transaksi
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('laporan.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Laporan
                             </a>
