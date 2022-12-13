@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KatgoriController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,11 @@ Route::get('/', function () {
 // Route group admin
 Route::group(['prefix' => '/admin'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.admin');
+
+    //Route::group parent kategori
+    Route::group(['prefix' => '/kategori'], function() {
+        Route::get('/', [KatgoriController::class, 'index'])->name('kategori.index');
+        Route::get('/create', [KatgoriController::class, 'create'])->name('create.kategori');
+        Route::get('/edit', [KatgoriController::class, 'edit'])->name('edit.kategori');
+    });
 });
