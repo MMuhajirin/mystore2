@@ -6,6 +6,7 @@ use App\Http\Controllers\KatgoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -56,6 +57,13 @@ Route::group(['prefix' => '/admin'], function() {
     Route::group(['prefix' => '/customer'], function (){
         Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
         Route::get('/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+
+    });
+
+    //Route::group parent profil
+    Route::group(['prefix' => '/user'], function (){
+        Route::get('/', [UserController::class, 'index'])->name('user.index');
+        Route::get('/setting', [UserController::class, 'setting'])->name('user.setting');
 
     });
 });
