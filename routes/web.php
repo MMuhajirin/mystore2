@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KatgoriController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiController;
 
 
 
@@ -39,6 +40,14 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/create', [ProdukController::class, 'create'])->name('create.produk');
         Route::get('/show', [ProdukController::class, 'show'])->name('show.produk');
         Route::get('/edit', [ProdukController::class, 'edit'])->name('edit.produk');
+
+    });
+
+    //Route::group parent transaksi
+    Route::group(['prefix' => '/transaksi'], function (){
+        Route::get('/', [TransaksiController::class, 'index'])->name('transaksi.index');
+        Route::get('/edit', [TransaksiController::class, 'edit'])->name('transaksi.edit');
+        Route::get('/show', [TransaksiController::class, 'show'])->name('transaksi.show');
 
     });
 });
